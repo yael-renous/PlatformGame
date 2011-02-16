@@ -74,10 +74,10 @@ public class GameManager : MonoBehaviour
         if(CurrentNumOfLives==0) return;
         
         CurrentNumOfLives--;
+        OnPlayerHit?.Invoke();
+
         if (CurrentNumOfLives == 0)
             OnGameLost?.Invoke();
-        else
-            OnPlayerHit?.Invoke();
     }
 
     public void CollectedCoin()
