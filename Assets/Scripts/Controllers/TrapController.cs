@@ -21,12 +21,12 @@ public class TrapController : InteractableObject
     {
         base.Start();
         ChangeRotationSpeed();
-        GameManager.Instance.OnPlayerHit += ShowParticles;
+        // GameManager.Instance.OnPlayerHit += ShowParticles;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnPlayerHit -= ShowParticles;
+        // GameManager.Instance.OnPlayerHit -= ShowParticles;
     }
 
 
@@ -53,7 +53,7 @@ public class TrapController : InteractableObject
         currentRotationSpeed = Random.Range(100, maxRotationSpeed);
     }
     
-    private void ShowParticles()
+    public void ShowParticles()
     {
         Instantiate(_particleSystemPrefab, transform.position, Quaternion.identity);
     }

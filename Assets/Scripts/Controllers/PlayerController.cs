@@ -10,7 +10,7 @@ public class PlayerController : InteractableObject
     public static readonly string TAG_STRING = "Player";
 
     private float moveSpeed = 4.0f;
-    private float turnSpeed = 400.0f; // Degrees per second
+    private float turnSpeed = 400.0f; 
     private float jumpForce = 8.0f;
     
     private Animator _animator;
@@ -133,6 +133,7 @@ public class PlayerController : InteractableObject
         {
             if (Time.time - _lastHitTime < _hitCooldown) return;
             
+            collision.gameObject.GetComponent<TrapController>().ShowParticles();
             _lastHitTime = Time.time;
             GameManager.Instance.GotHit();
             _animator.SetTrigger("Hit");

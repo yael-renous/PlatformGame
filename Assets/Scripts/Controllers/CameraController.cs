@@ -25,7 +25,6 @@ public class CameraController : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.OnGotKey -= ShowDoor;
-
     }
 
     private void SetUpCameras()
@@ -45,7 +44,7 @@ public class CameraController : MonoBehaviour
             DoorController door = FindObjectOfType<DoorController>();
             _doorCamera.Follow = door.transform;
         }
-        // _mainCamera.gameObject.SetActive(false);
+        
         _doorCamera.gameObject.SetActive(true);
         StartCoroutine(SwitchBackToMainCamera());
     }
@@ -53,7 +52,6 @@ public class CameraController : MonoBehaviour
     private IEnumerator SwitchBackToMainCamera()
     {
         yield return new WaitForSeconds(4.2f);
-        // _mainCamera.gameObject.SetActive(true);
         _doorCamera.gameObject.SetActive(false);
 
     }
