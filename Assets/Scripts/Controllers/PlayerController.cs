@@ -9,7 +9,7 @@ public class PlayerController : InteractableObject
 {
     public static readonly string TAG_STRING = "Player";
 
-    private float moveSpeed = 2.0f;
+    private float moveSpeed = 4.0f;
     private float turnSpeed = 400.0f; // Degrees per second
     private float jumpForce = 8.0f;
     
@@ -115,7 +115,21 @@ public class PlayerController : InteractableObject
         {
             GameManager.Instance.CollectedCoin();
         }
-        else if (other.gameObject.CompareTag(TrapController.TAG_STRING))
+
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(PlatformController.TAG_STRING))
+        {
+            _isGrounded = true;
+            _animator.SetBool("IsGrounded", true);
+        }
+        else if (collision.gameObject.CompareTag(DoorController.TAG_STRING) && GameManager.Instance.HasKey)
+        {
+            GameManager.Instance.LevelFinished();
+        }
+        else if (collision.gameObject.CompareTag(TrapController.TAG_STRING))
         {
             if (Time.time - _lastHitTime < _hitCooldown) return;
             
@@ -123,14 +137,6 @@ public class PlayerController : InteractableObject
             GameManager.Instance.GotHit();
             _animator.SetTrigger("Hit");
         }
-        else if (other.gameObject.CompareTag(DoorController.TAG_STRING) && GameManager.Instance.HasKey)
-        {
-            GameManager.Instance.LevelFinished();
-        }
-        else if (other.gameObject.CompareTag(PlatformController.TAG_STRING))
-        {
-            _animator.SetBool("IsGrounded", true);
-            _isGrounded = true;
-        }
     }
+    
 }

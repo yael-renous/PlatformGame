@@ -1,6 +1,9 @@
 ###  The Great Platforms ###
 
-1. **To Play:** Open Scene: HomeScene and have fun!
+1. **To Play:** 
+  - Open Scene: HomeScene 
+  - Use arrows and spacebar
+  - Have fun!
 2. **To Generate Automatically New Level:**
   - Open Tools-> Level Creator
   - Fill out the information

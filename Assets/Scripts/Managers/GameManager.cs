@@ -128,8 +128,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToHomeScreen()
     {
-        PlayCutsceneAndLoadScene(_openingSceneName);
-
+        SceneManager.LoadScene(_openingSceneName);
         ResetGameValues();
     }
 

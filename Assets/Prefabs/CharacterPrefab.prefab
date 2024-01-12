@@ -964,7 +964,8 @@ GameObject:
   - component: {fileID: 3355130253061772049}
   - component: {fileID: 3285248441175430839}
   - component: {fileID: 1322148977934066454}
-  - component: {fileID: 7927942009255934768}
+  - component: {fileID: 3551620815640604648}
+  - component: {fileID: 329916616766359118}
   m_Layer: 3
   m_Name: CharacterPrefab
   m_TagString: Player
@@ -1001,10 +1002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766038bcda7f44565a91d2253739948c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 0.04
-  moveSpeed: 5
-  turnSpeed: 400
-  jumpForce: 5
 --- !u!54 &3285248441175430839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1042,7 +1039,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &7927942009255934768
+--- !u!65 &3551620815640604648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361525638030651903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4223296, y: 1.4443412, z: 0.84097433}
+  m_Center: {x: 0.05653158, y: 0.7275306, z: 0.1383376}
+--- !u!136 &329916616766359118
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1052,10 +1062,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 1.73
+  m_Radius: 0.52567166
+  m_Height: 1.9700001
   m_Direction: 1
-  m_Center: {x: 0.15, y: 0.71, z: 0.08}
+  m_Center: {x: 0.06999999, y: 0.76, z: 0.15914571}
 --- !u!1 &4456893152817259210
 GameObject:
   m_ObjectHideFlags: 0

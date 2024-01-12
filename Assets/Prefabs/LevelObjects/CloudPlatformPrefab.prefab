@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 3102854562432811292}
   - component: {fileID: 2936482116205079235}
   - component: {fileID: 1888700371137185167}
-  - component: {fileID: 1334969332705838484}
   m_Layer: 0
   m_Name: CloudPlatformPrefab
   m_TagString: Platform
@@ -141,18 +140,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.504345, y: 2.2376962, z: 8.204667}
-  m_Center: {x: 0.18236914, y: 0.93153536, z: 0.154802}
---- !u!65 &1334969332705838484
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325085993674365862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 16.504345, y: 2.2376962, z: 8.204667}
-  m_Center: {x: 0.18236914, y: 0.93153536, z: 0.154802}
+  m_Size: {x: 16.504345, y: 1.9194789, z: 7.266523}
+  m_Center: {x: 0.18236955, y: 1.090644, z: 0.34053603}

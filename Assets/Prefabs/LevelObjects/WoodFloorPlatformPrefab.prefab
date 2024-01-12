@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8343952835805670890}
   - component: {fileID: 3563871944493536530}
   - component: {fileID: 1196443518747763559}
-  - component: {fileID: 4178482510394241218}
   m_Layer: 0
   m_Name: WoodFloorPlatformPrefab
   m_TagString: Platform
@@ -126,18 +125,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.506916, y: 0.9552843, z: 16.568098}
-  m_Center: {x: 0, y: 0.49077728, z: -0.030591011}
---- !u!65 &4178482510394241218
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8320350984354292752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 16.506914, y: 0.95528436, z: 16.568098}
-  m_Center: {x: 0, y: 0.49077725, z: -0.030591011}
+  m_Size: {x: 15.622583, y: 0.9552843, z: 15.384451}
+  m_Center: {x: -0.00536263, y: 0.4907773, z: 0.14948547}
