@@ -6,31 +6,32 @@ using UnityEngine.SceneManagement;
 [CustomEditor(typeof(LevelConfig))]
 public class LevelConfigEditor : Editor
 {
+    private LevelConfig _config;
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        LevelConfig config = (LevelConfig) target;
+        _config = (LevelConfig) target;
 
-        if (SceneManager.GetActiveScene().name == config.sceneName)
+        if (SceneManager.GetActiveScene().name == _config.sceneName)
         {
             if (GUILayout.Button("Update"))
             {
-                UpdateSceneObjects(config);
+                UpdateSceneObjects();
             }
         }
         else
         {
             if (GUILayout.Button("Open Scene and Update"))
             {
-                if (!string.IsNullOrEmpty(config.sceneName))
+                if (!string.IsNullOrEmpty(_config.sceneName))
                 {
                     if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
                     {
                         EditorSceneManager.OpenScene(
-                            "Assets/Scenes/" + config.levelName + "/" + config.sceneName + ".unity",
+                            "Assets/Scenes/" + _config.sceneName + ".unity",
                             OpenSceneMode.Single);
-                        UpdateSceneObjects(config);
+                        UpdateSceneObjects();
                     }
                 }
                 else
@@ -41,35 +42,9 @@ public class LevelConfigEditor : Editor
         }
     }
 
-    private void UpdateSceneObjects(LevelConfig config)
+    private void UpdateSceneObjects()
     {
-        var scene = SceneManager.GetActiveScene();
-        foreach (var rootObject in scene.GetRootGameObjects())
-        {
-            UpdateObjectWithTag(rootObject, GameTags.Platform, config.platformPrefab);
-            UpdateObjectWithTag(rootObject, GameTags.Coin, config.coinPrefab);
-            UpdateObjectWithTag(rootObject, GameTags.Trap, config.trapPrefab);
-            UpdateObjectWithTag(rootObject, GameTags.Key, config.keyPrefab);
-            UpdateObjectWithTag(rootObject, GameTags.Door, config.doorPrefab);
-        }
-    }
-
-    private void UpdateObjectWithTag(GameObject rootObject, string tag, GameObject prefab)
-    {
-        if (prefab == null) return;
-
-        foreach (var childObject in rootObject.GetComponentsInChildren<Transform>(true))
-        {
-            if (childObject!=null && childObject.gameObject.CompareTag(tag))
-            {
-                GameObject newObject = PrefabUtility.InstantiatePrefab(prefab, childObject.parent) as GameObject;
-                newObject.transform.localPosition = childObject.localPosition;
-                newObject.transform.localRotation = childObject.localRotation;
-                newObject.tag = tag;
-                Undo.RegisterCreatedObjectUndo(newObject, "Created new " + tag);
-
-                Undo.DestroyObjectImmediate(childObject.gameObject);
-            }
-        }
+        Scene currentScene = SceneManager.GetActiveScene();
+        LevelUtils.UpdateSceneObjects(_config, currentScene);
     }
 }
