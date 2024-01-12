@@ -21,7 +21,7 @@ public class PlayerController : InteractableObject
     private bool _isGrounded = true;
 
     private float _lastHitTime = -5f;
-    private readonly float _hitCooldown = 5f;
+    private readonly float _hitCooldown = 2f;
 
     protected override void Start()
     {
@@ -119,10 +119,12 @@ public class PlayerController : InteractableObject
         else if (other.gameObject.CompareTag(TrapController.TAG_STRING))
         {
             if (Time.time - _lastHitTime < _hitCooldown) return;
+            
             _lastHitTime = Time.time;
-    
-            _animator.SetTrigger("Hit");
             GameManager.Instance.GotHit();
+            _animator.SetTrigger("Hit");
+            transform.position += transform.right * 0.8f;
+            
         }
         else if (other.gameObject.CompareTag(DoorController.TAG_STRING) && GameManager.Instance.HasKey)
         {
@@ -130,6 +132,7 @@ public class PlayerController : InteractableObject
         }
         else if (other.gameObject.CompareTag(PlatformController.TAG_STRING))
         {
+            _animator.SetBool("IsGrounded", true);
             _isGrounded = true;
         }
     }

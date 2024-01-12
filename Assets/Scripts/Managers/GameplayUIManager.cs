@@ -68,7 +68,7 @@ public class GameplayUIManager : MonoBehaviour
 
     private void ShowGameLost()
     {
-        _gameOverText.text = "GAME OVER :(";
+        _gameOverText.text = "GAME OVER";
         Color bgColor = Color.red;
         bgColor.a = 0.6f;
         _gameOverBG.color = bgColor;

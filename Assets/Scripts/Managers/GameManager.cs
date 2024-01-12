@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameConfig _config;
     private int _currentLevelIndex = -1;
-    private string _openingSceneName = "OpeningScene";
+    private string _openingSceneName = "HomeScene";
 
     private void Awake()
     {

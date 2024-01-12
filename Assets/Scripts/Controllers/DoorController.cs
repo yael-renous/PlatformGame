@@ -28,6 +28,13 @@ public class DoorController : InteractableObject
 
     private void OpenDoor()
     {
+        StartCoroutine(OpenDoorAfterDelay());
+    }
+    
+    private IEnumerator OpenDoorAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+
         _doorClosedObject.SetActive(false);
         _doorOpenBlackHole.SetActive(true);
     }

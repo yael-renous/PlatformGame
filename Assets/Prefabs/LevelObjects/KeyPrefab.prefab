@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3644f93f59dc45398e00614a569c9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystemPrefab: {fileID: 166208352944670846, guid: 84421a724beb64d64b983de9b19d5aa2, type: 3}
+  _particleSystemPrefab: {fileID: 5092333500457337927, guid: 13a73489944db4b18899388da8f978f5, type: 3}
 --- !u!1001 &8614029016012309490
 PrefabInstance:
   m_ObjectHideFlags: 0

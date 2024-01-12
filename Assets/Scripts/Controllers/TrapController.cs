@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(BoxCollider))]
 public class TrapController : InteractableObject
@@ -19,7 +21,15 @@ public class TrapController : InteractableObject
     {
         base.Start();
         ChangeRotationSpeed();
+        GameManager.Instance.LostLifeAction += ShowParticles;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.LostLifeAction += ShowParticles;
+    }
+
+
     public override string GetTag()
     {
         return TAG_STRING;
@@ -29,27 +39,22 @@ public class TrapController : InteractableObject
     {
         timer += Time.deltaTime;
 
-        // Check if it's time to change the rotation speed
         if (timer >= changeInterval)
         {
             ChangeRotationSpeed();
             timer = 0;
         }
 
-        // Apply the rotation
         transform.Rotate(0f, currentRotationSpeed * Time.deltaTime, 0f, Space.Self);
     }
 
     private void ChangeRotationSpeed()
     {
-        // Randomly change the rotation speed
         currentRotationSpeed = Random.Range(100, maxRotationSpeed);
     }
-    private void OnTriggerEnter(Collider other)
+    
+    private void ShowParticles()
     {
-        if (other.tag.Equals(PlayerController.TAG_STRING))
-        {
-            Instantiate(_particleSystemPrefab, transform.position, Quaternion.identity);
-        }
+        Instantiate(_particleSystemPrefab, transform.position, Quaternion.identity);
     }
 }
