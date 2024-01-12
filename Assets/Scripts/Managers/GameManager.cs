@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -22,9 +23,14 @@ public class GameManager : MonoBehaviour
     public Action GameOverLost;
     public Action GameOverWon;
     
+    private readonly string _openingSceneName = "HomeScene";
+    private readonly string _cutSceneName = "CutScene";
+    
     [SerializeField] private GameConfig _config;
+
     private int _currentLevelIndex = -1;
-    private string _openingSceneName = "HomeScene";
+    private string _sceneWaitingForCutToEnd;
+   
 
     private void Awake()
     {
@@ -82,13 +88,12 @@ public class GameManager : MonoBehaviour
 
     public void LevelFinished()
     {
-        LoadNextLevel();
+        NextLevel();
         ResetLevelValues();
     }
 
-    private void LoadNextLevel()
+    private void NextLevel()
     {
-        Debug.Log("LoadNextLevel");
         _currentLevelIndex++;
         if (_currentLevelIndex >= _config.levels.Length)
         {
@@ -98,7 +103,7 @@ public class GameManager : MonoBehaviour
         
         ResetLevelValues();
         string sceneName = _config.levels[_currentLevelIndex].sceneName;
-        SceneManager.LoadScene(sceneName);
+        PlayCutsceneAndLoadScene(sceneName);
     }
 
     public void OpenLevel(string levelName)
@@ -117,14 +122,27 @@ public class GameManager : MonoBehaviour
         }
 
         sceneName = string.IsNullOrEmpty(sceneName) ? _config.levels[0].sceneName : sceneName;
-        SceneManager.LoadScene(sceneName);
-
+        PlayCutsceneAndLoadScene(sceneName);
         ResetLevelValues();
     }
 
     public void ReturnToHomeScreen()
     {
-        SceneManager.LoadScene(_openingSceneName);
+        PlayCutsceneAndLoadScene(_openingSceneName);
+
         ResetGameValues();
     }
+
+    public void OpenSceneAfterCutScene()
+    {
+        SceneManager.LoadScene(_sceneWaitingForCutToEnd);
+    }
+    
+    public void PlayCutsceneAndLoadScene(string nextSceneName)
+    {
+        _sceneWaitingForCutToEnd = nextSceneName;
+        SceneManager.LoadScene(_cutSceneName);
+
+    }
+    
 }
