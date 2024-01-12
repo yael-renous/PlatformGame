@@ -395,6 +395,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1322148977934066454, guid: cc98a15048d9c4e12888408d0b0887e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322148977934066454, guid: cc98a15048d9c4e12888408d0b0887e5, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -630,6 +634,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1057675432}
     m_Modifications:
+    - target: {fileID: 1196443518747763559, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7097771
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196443518747763559, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Center.y
+      value: 0.3680237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196443518747763559, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Center.z
+      value: -0.030590892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178482510394241218, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.78273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178482510394241218, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Center.y
+      value: 0.40450007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178482510394241218, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
+      propertyPath: m_Center.z
+      value: -0.030590892
+      objectReference: {fileID: 0}
     - target: {fileID: 8320350984354292752, guid: 1415a4002758a434eb152b96e38a3be1, type: 3}
       propertyPath: m_Name
       value: WoodFloorPlatformPrefab
