@@ -11,14 +11,14 @@ public class DoorController : InteractableObject
     protected override void Start()
     {
         base.Start();
-        GameManager.Instance.GotKeyAction += OpenDoor;
+        GameManager.Instance.OnGotKey += OpenDoor;
         _doorClosedObject.SetActive(true);
         _doorOpenBlackHole.SetActive(false);
     }
 
     public void OnDestroy()
     {
-        GameManager.Instance.GotKeyAction -= OpenDoor;
+        GameManager.Instance.OnGotKey -= OpenDoor;
     }
 
     public override string GetTag()

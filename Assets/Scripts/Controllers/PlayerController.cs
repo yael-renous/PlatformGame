@@ -9,11 +9,10 @@ public class PlayerController : InteractableObject
 {
     public static readonly string TAG_STRING = "Player";
 
-    public float moveDistance = 0.04f;
-    public float moveSpeed = 2.0f;
-    public float turnSpeed = 400.0f; // Degrees per second
-    public float jumpForce = 8.0f;
-
+    private float moveSpeed = 2.0f;
+    private float turnSpeed = 400.0f; // Degrees per second
+    private float jumpForce = 8.0f;
+    
     private Animator _animator;
     private Rigidbody _rigidbody;
     private bool _isWalking = false;
@@ -43,9 +42,9 @@ public class PlayerController : InteractableObject
 
         // Calculating movement direction
         _movementInput = new Vector3(horizontalInput, 0, verticalInput).normalized;
-
         UpdatePlayerAnimations();
     }
+    
 
     private void UpdatePlayerAnimations()
     {
@@ -123,8 +122,6 @@ public class PlayerController : InteractableObject
             _lastHitTime = Time.time;
             GameManager.Instance.GotHit();
             _animator.SetTrigger("Hit");
-            transform.position += transform.right * 0.8f;
-            
         }
         else if (other.gameObject.CompareTag(DoorController.TAG_STRING) && GameManager.Instance.HasKey)
         {

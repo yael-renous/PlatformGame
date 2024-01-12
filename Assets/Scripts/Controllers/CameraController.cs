@@ -19,12 +19,12 @@ public class CameraController : MonoBehaviour
     public void Start()
     {
         SetUpCameras();
-        GameManager.Instance.GotKeyAction += ShowDoor;
+        GameManager.Instance.OnGotKey += ShowDoor;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.GotKeyAction -= ShowDoor;
+        GameManager.Instance.OnGotKey -= ShowDoor;
 
     }
 

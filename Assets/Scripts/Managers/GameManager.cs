@@ -17,11 +17,11 @@ public class GameManager : MonoBehaviour
     public int CurrentNumOfLives { get; private set; }
     public bool HasKey { get; private set; }
 
-    public Action LostLifeAction;
-    public Action GotKeyAction;
-    public Action CoinCollectedAction;
-    public Action GameOverLost;
-    public Action GameOverWon;
+    public Action OnPlayerHit;
+    public Action OnGotKey;
+    public Action OnCoinCollected;
+    public Action OnGameLost;
+    public Action OnGameWon;
     
     private readonly string _openingSceneName = "HomeScene";
     private readonly string _cutSceneName = "CutScene";
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     public void GotKey()
     {
         HasKey = true;
-        GotKeyAction?.Invoke();
+        OnGotKey?.Invoke();
     }
 
     public void GotHit()
@@ -75,15 +75,15 @@ public class GameManager : MonoBehaviour
         
         CurrentNumOfLives--;
         if (CurrentNumOfLives == 0)
-            GameOverLost?.Invoke();
+            OnGameLost?.Invoke();
         else
-            LostLifeAction?.Invoke();
+            OnPlayerHit?.Invoke();
     }
 
     public void CollectedCoin()
     {
         CoinsCollected++;
-        CoinCollectedAction?.Invoke();
+        OnCoinCollected?.Invoke();
     }
 
     public void LevelFinished()
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         _currentLevelIndex++;
         if (_currentLevelIndex >= _config.levels.Length)
         {
-           GameOverWon?.Invoke();
+           OnGameWon?.Invoke();
            return;
         }
         

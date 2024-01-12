@@ -38,21 +38,21 @@ public class GameplayUIManager : MonoBehaviour
     }
     private void RegisterListeners()
     {
-        GameManager.Instance.GotKeyAction += GotKey;
-        GameManager.Instance.LostLifeAction += LostLife;
-        GameManager.Instance.CoinCollectedAction += CoinsUpdated;
-        GameManager.Instance.GameOverLost += ShowGameLost;
-        GameManager.Instance.GameOverWon += ShowGameWon;
+        GameManager.Instance.OnGotKey += GotKey;
+        GameManager.Instance.OnPlayerHit += LostLife;
+        GameManager.Instance.OnCoinCollected += CoinsUpdated;
+        GameManager.Instance.OnGameLost += ShowGameLost;
+        GameManager.Instance.OnGameWon += ShowGameWon;
         _homeButton.onClick.AddListener(LoadHomeScene);
     }
 
     private void UnRegisterListeners()
     {
-        GameManager.Instance.GotKeyAction -= GotKey;
-        GameManager.Instance.LostLifeAction -= LostLife;
-        GameManager.Instance.CoinCollectedAction -= CoinsUpdated;
-        GameManager.Instance.GameOverLost -= ShowGameLost;
-        GameManager.Instance.GameOverWon -= ShowGameWon;
+        GameManager.Instance.OnGotKey -= GotKey;
+        GameManager.Instance.OnPlayerHit -= LostLife;
+        GameManager.Instance.OnCoinCollected -= CoinsUpdated;
+        GameManager.Instance.OnGameLost -= ShowGameLost;
+        GameManager.Instance.OnGameWon -= ShowGameWon;
         _homeButton.onClick.RemoveListener(LoadHomeScene);
     }
 

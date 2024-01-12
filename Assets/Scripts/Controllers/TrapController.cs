@@ -21,12 +21,12 @@ public class TrapController : InteractableObject
     {
         base.Start();
         ChangeRotationSpeed();
-        GameManager.Instance.LostLifeAction += ShowParticles;
+        GameManager.Instance.OnPlayerHit += ShowParticles;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.LostLifeAction += ShowParticles;
+        GameManager.Instance.OnPlayerHit -= ShowParticles;
     }
 
 
