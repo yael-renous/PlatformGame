@@ -91,6 +91,8 @@ public class PlayerController : InteractableObject
             //Clamp
             nextPosition.x = Mathf.Clamp(nextPosition.x, GameManager.MinGameBounds.x,
                 GameManager.MaxGameBounds.x);
+            nextPosition.y = Mathf.Clamp(nextPosition.y, GameManager.MinGameBounds.y,
+                GameManager.MaxGameBounds.y);
             nextPosition.z = Mathf.Clamp(nextPosition.z, GameManager.MinGameBounds.z,
                 GameManager.MaxGameBounds.z);
             _rigidbody.MovePosition(nextPosition);

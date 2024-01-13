@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public static Vector3 MinGameBounds = new Vector3(-10, 0, -5);
-    public static Vector3 MaxGameBounds = new Vector3(10, 20, 5);
+    public static Vector3 MaxGameBounds = new Vector3(10, 50, 5);
 
     public int CoinsCollected { get; private set; }
     public int MaxNumOfLives { get; private set; }
